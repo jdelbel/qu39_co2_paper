@@ -14,7 +14,11 @@ library(readxl)
 #Upload the full 5m chemtax timeseries - processing in same way as manuscript
 chem <- read_csv(here("files", "combined_2024-02-07.csv"))
 
+#POC data
+poc <- read_csv(here("outputs", "poc_conversion_2024-03-20.csv"))
 ```
+
+Wrangling Data
 
 ```{r}
 #Working with chemtax data to make it easy to plot
@@ -52,6 +56,7 @@ chem_dup <- chem_long %>%
 
 #Good to move forward
 ```
+
 
 
 ```{r}
@@ -98,6 +103,18 @@ cu_sum <- chem_long %>%
          bm_sum_total = cumsum(bm_total)) %>%  
   ungroup() %>% 
   mutate(doy = lubridate::yday(date))
+
+#Selecting max value for Wiley's table
+cu_sum_max_tchla <- cu_sum %>% 
+  group_by(year) %>% 
+  filter(bm_sum_total == max(bm_sum_total, na.rm = T)) %>% 
+  ungroup()
+
+#Selecting max value for Wiley's table
+cu_sum_pos_tchla <- cu_sum %>% 
+  group_by(year) %>% 
+  slice(which.max(bm_sum_total > 0)) %>% 
+  ungroup()
 ```
 
 ```{r}
@@ -152,7 +169,7 @@ chem_full <- chem_join_plot %>%
             aes(date, y = bm_sum_total/scale_int),
             color = "black", size = 1.5) +
   geom_line(data = filter(chem_join_plot, date >= as.Date("2018-03-20") &
-                            date <= as.Date("2018-10-30")),
+                            date <= as.Date("2018-10-24")),
             aes(date, y = bm_sum_total/scale_int),
             color = "black", size = 1.5) +
   geom_line(data = filter(chem_join_plot, date >= as.Date("2019-03-12") &
@@ -160,7 +177,7 @@ chem_full <- chem_join_plot %>%
             aes(date, y = bm_sum_total/scale_int),
             color = "black", size = 1.5) +
   geom_line(data = filter(chem_join_plot, date >= as.Date("2020-03-18") &
-                            date <= as.Date("2020-09-22")),
+                            date <= as.Date("2020-07-29")),
             aes(date, y = bm_sum_total/scale_int),
             color = "black", size = 1.5) +
   geom_line(data = filter(chem_join_plot, date >= as.Date("2021-02-23") &
@@ -286,8 +303,175 @@ ggsave(here("figures", "timeseries_5m_chemtax_integrated_alternative.png"),
 ```
 
 
+POC Data
 
+```{r}
+# https://community.rstudio.com/t/interpolation-using-varying-dates/29607/2
+poc_model <- poc %>% 
+  select(!...1) %>% 
+  filter(date > "2015-01-01" & date < "2023-01-01")
 
+#Working to convert data to two week average using linear fit so that dataset is consistent for cumulative sum.
+ApproxFun_kg <- approxfun(x = poc_model$date, y = poc_model$poc_umol_kg)
+ApproxFun_l <- approxfun(x = poc_model$date, y = poc_model$poc_umol)
+Dates <- seq.Date(lubridate::ymd("2015-01-01"), lubridate::ymd("2022-12-31"),
+                  by = 14)
+
+LinearFit_kg <- ApproxFun_kg(Dates)
+LinearFit_l <- ApproxFun_l(Dates)
+head(LinearFit_kg)
+
+```
+
+```{r}
+plot(poc_model$date, poc_model$poc_umol_kg)
+lines(Dates, LinearFit_kg, col = "blue")
+```
+
+```{r}
+#Making a dataframe with the interpolated POC timeseries - doing this for both umol/kg and umol/m3
+poc_interp_kg <- as.data.frame(LinearFit_kg)
+
+#Adding date
+poc_interp_kg$date = Dates
+
+#renaming columns
+poc_interp_kg <- poc_interp_kg %>% 
+  select(date, poc_14_kg = LinearFit_kg)
+
+#umol/l
+poc_interp_l <- as.data.frame(LinearFit_l)
+
+#adding dates
+poc_interp_l$date = Dates
+
+#renaming columns
+poc_interp_l <- poc_interp_l %>% 
+  select(date, poc_14_l = LinearFit_l)
+```
+
+```{r}
+#Plotting the interpolation versus the data.
+poc_interp_kg %>% 
+  ggplot() +
+  # geom_line(data = poc, aes(x = date, y = poc_umol_kg), color = "black", size = 2) +
+  geom_point(data = poc, aes(x = date, y = poc_umol_kg), color = "red",
+             size = 1, fill = "white", pch = 21, stroke = 1.5) +
+  geom_line(data = poc_interp_kg, aes(x = date, y = poc_14_kg), color = "blue") +
+  geom_point(data = poc_interp_kg, aes(x = date, y = poc_14_kg), color = "blue") +
+  theme_bw() +
+  theme(text = element_text(size = 25), #35
+        axis.text = element_text(colour = "black"),
+        axis.title.x = element_blank())
+
+ggsave(here("figures", "poc_interpolation_comparison.png"),
+       width = 12, height = 6, dpi = 300)  
+```
+
+```{r}
+#Removing the 2020 COVID gap from the interpolated data
+poc_interp_kg_gap <- poc_interp_kg %>% 
+  filter(date < "2020-03-21" | date > "2020-05-13")
+```
+
+```{r}
+#Calculating cumulative sum TChla with the umol/kg dataset
+cu_sum_poc_kg <- poc_interp_kg_gap %>%
+  drop_na() %>% 
+  mutate(year = lubridate::year(date)) %>% 
+  select(date, year, poc_14_kg) %>% 
+  group_by(year) %>% 
+  mutate(bm_sum_total_kg = cumsum(poc_14_kg)) %>%  
+  ungroup() %>% 
+  mutate(doy = lubridate::yday(date))
+
+```
+
+```{r}
+#Selecting max value for Wiley's table
+cu_sum_max_poc_kg <- cu_sum_poc_kg %>% 
+  group_by(year) %>% 
+  filter(bm_sum_total_kg == max(bm_sum_total_kg, na.rm = T)) %>% 
+  ungroup()
+
+```
+
+```{r}
+scale_pom2 <- 5
+
+cu_sum_poc_kg %>%
+  mutate(year = lubridate::year(date),
+         yday = lubridate::yday(date)) %>%
+  ggplot() +
+  geom_area(data = filter(cu_sum_poc_kg, date > "2015-01-01" &
+                            date < "2020-03-20"),
+            aes(x = date, y = poc_14_kg), color = "gray", size = 0.2,
+            alpha = 0.5) +
+  geom_area(data = filter(cu_sum_poc_kg, date > "2020-05-13"),
+            aes(x = date, y = poc_14_kg), color = "gray", size = 0.2,
+            alpha = 0.5) +
+  geom_point(aes(x = date, y = poc_14_kg), size = 0.3) +
+
+  # geom_line(aes(date, y = bm_sum_total_kg/scale_pom2),
+  #           color = "black", size = 1) +
+  geom_line(data = filter(cu_sum_poc_kg, date > "2015-01-01" &
+                            date < "2015-12-31"),
+            aes(date, y = bm_sum_total_kg/scale_pom2),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(cu_sum_poc_kg, date >= "2016-01-01" &
+                            date <= "2016-12-31"),
+            aes(date, y = bm_sum_total_kg/scale_pom2),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(cu_sum_poc_kg, date >= "2017-01-01" &
+                            date <= "2017-12-31"),
+            aes(date, y = bm_sum_total_kg/scale_pom2),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(cu_sum_poc_kg, date >= "2018-01-01" &
+                            date <= "2018-12-31"),
+            aes(date, y = bm_sum_total_kg/scale_pom2),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(cu_sum_poc_kg, date >= "2019-01-01" &
+                            date <= "2019-12-31"),
+            aes(date, y = bm_sum_total_kg/scale_pom2),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(cu_sum_poc_kg, date >= "2020-01-01" &
+                            date <= "2020-12-31"),
+            aes(date, y = bm_sum_total_kg/scale_pom2),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(cu_sum_poc_kg, date >= "2021-01-01" &
+                            date <= "2021-12-21"),
+            aes(date, y = bm_sum_total_kg/scale_pom2),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(cu_sum_poc_kg, date >= "2022-01-01" &
+                            date <= "2022-12-31"),
+            aes(date, y = bm_sum_total_kg/scale_pom2),
+            color = "black", size = 1.5) +
+  # geom_point(aes(date, y = bm_sum/scale_pom), fill = "transparent", size = 1.5,
+  #            pch = 21, stroke = 1) +
+  scale_y_continuous(sec.axis = sec_axis(~.*scale_pom2,
+                                         name = bquote("CUSUM POC (μmol" ~ kg^-1*")"))) +
+  scale_x_date(limits = as.Date(c("2015-03-18", "2024-01-01")),
+               expand = c(0, 0),
+               date_breaks = "years", date_labels = "%b%y") +
+  # coord_cartesian(xlim = as.Date(c("2015-03-18", "2023-05-09"))) +
+  theme_bw() +
+  labs(y = bquote("POC (μmol" ~ kg^-1*")")) +
+  # scale_y_continuous(expand = c(0, 0), limits = c(0,12)) +
+  # scale_x_date(breaks = scales::date_breaks("3 month"),
+  #              labels = scales::date_format("%m/%y")) +
+  theme(legend.position = c(0.1, 0.93),
+        legend.direction = "horizontal",
+        legend.title = element_blank(),
+        # strip.background = element_blank(),
+        # strip.text.x = element_blank(),
+        # panel.spacing = unit(2, "lines"),
+        text = element_text(size = 25), #35
+        axis.text = element_text(color = "black"),
+        axis.title.x = element_blank())
+
+ggsave(here("figures", "test.png"),
+        width = 15, height = 6, dpi = 300)
+```
 
 
 

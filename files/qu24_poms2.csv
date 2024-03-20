@@ -1,0 +1,163 @@
+action,event_pk,rn,date,work_area,organization,project,survey,sampling_bout,site_id,source,lat,long,collection_method,line_out_depth,pressure_transducer_depth,acidified,acidification_method,volume,part,screen_size,collected,preserved,analyzed,lab_technician,filter_portion,project_specific_id,hakai_id,pre_weight_mg,post_weight_mg,filter_size_mm,filter_type,total_beam_n,ug_n,per_n,delta_air,corr_delta15n,total_beam_c,ug_c,per_c,delta_pdb,corr_delta13c,c_n,analyzing_lab,c_flag,n_flag,c_n_flag,row_flag,quality_level,comments,quality_log
+,4460,1,11/7/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,240,,FALSE,None,3310,,,2014-11-07T17:30:32.000Z,2014-11-07T22:00:03.000Z,,,1,,QF47,131,,47,,,14.07762462,,,11.31761919,,109.518614,,,-24.00151071,,UCDAVISSIF,,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4460,1,11/7/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,5,,FALSE,None,3470,,,2014-11-07T17:30:32.000Z,2014-11-07T22:00:03.000Z,,,1,,QF48,133,,47,,,8.694338364,,,8.742602981,,72.27095128,,,-26.13617188,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4460,1,11/7/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,30,,FALSE,None,3300,,,2014-11-07T17:30:32.000Z,2014-11-07T22:00:03.000Z,,,1,,QF49,132.3,,47,,,4.216369606,,,9.454267426,,47.89921338,,,-27.27847715,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4460,1,11/7/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,100,,FALSE,None,3500,,,2014-11-07T17:30:32.000Z,2014-11-07T22:00:03.000Z,,,1,,QF50,131.5,,47,,,6.694714944,,,5.562436781,,37.14402947,,,-24.05682032,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4460,1,11/7/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,0,,FALSE,None,3570,,,2014-11-07T17:30:32.000Z,2014-11-07T22:00:03.000Z,,,1,,QF52,129.9,,47,,,9.814883123,,,13.47552937,,108.5049047,,,-28.25063398,,UCDAVISSIF,,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4477,1,11/13/2014,QUADRA,HAKAI,FGS;OCEANOGRAPHY;OCEANOGRAPHY,B;QOMB;QOMA,1,QU24,M,50.03,-125.08,,0,,FALSE,None,3000,,,2014-11-13T17:00:30.000Z,2014-11-13T23:30:16.000Z,,,1,,QF60,131.6,,47,,,37.27874404,,,7.279379122,,350.0422075,,,-30.15126891,,UCDAVISSIF,,,,Results,Technicianmr,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4477,1,11/13/2014,QUADRA,HAKAI,FGS;OCEANOGRAPHY;OCEANOGRAPHY,B;QOMB;QOMA,1,QU24,M,50.03,-125.08,,30,,FALSE,None,3875,,,2014-11-13T17:00:30.000Z,2014-11-13T23:30:16.000Z,,,1,,QF63,131,,47,,,36.29334287,,,5.670028645,,214.9288722,,,-28.51857963,,UCDAVISSIF,,,,Results,Technicianmr,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4477,1,11/13/2014,QUADRA,HAKAI,FGS;OCEANOGRAPHY;OCEANOGRAPHY,B;QOMB;QOMA,1,QU24,M,50.03,-125.08,,240,,FALSE,None,3800,,,2014-11-13T17:00:30.000Z,2014-11-13T23:30:16.000Z,,,1,,QF64,132,,47,,,35.3323773,,,5.768299007,,228.8809738,,,-27.77989791,,UCDAVISSIF,,,,Results,Technicianmr,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4477,1,11/13/2014,QUADRA,HAKAI,FGS;OCEANOGRAPHY;OCEANOGRAPHY,B;QOMB;QOMA,1,QU24,M,50.03,-125.08,,5,,FALSE,None,3400,,,2014-11-13T17:00:30.000Z,2014-11-13T23:30:16.000Z,,,1,,QF65,130.9,,47,,,42.28638413,,,5.776927764,,274.9320681,,,-29.39752152,,UCDAVISSIF,,,,Results,Technicianmr,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4477,1,11/13/2014,QUADRA,HAKAI,FGS;OCEANOGRAPHY;OCEANOGRAPHY,B;QOMB;QOMA,1,QU24,M,50.03,-125.08,,100,,FALSE,None,3900,,,2014-11-13T17:00:30.000Z,2014-11-13T23:30:16.000Z,,,1,,QF66,129.7,,47,,,30.75561881,,,5.572720494,,222.9486687,,,-28.10485439,,UCDAVISSIF,,,,Results,Technicianmr,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4515,1,11/25/2014,QUADRA,HAKAI,OCEANOGRAPHY;FGS;OCEANOGRAPHY,QOMA;B;QOMB,1,QU24,M,50.03,-125.08,,240,,FALSE,None,3450,,,2014-11-25T18:41:40.000Z,2014-11-25T23:30:40.000Z,,,1,,QF76,130.6,,47,,,6.012953024,,,9.285331332,,85.97802486,,,-26.73383806,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4515,1,11/25/2014,QUADRA,HAKAI,OCEANOGRAPHY;FGS;OCEANOGRAPHY,QOMA;B;QOMB,1,QU24,M,50.03,-125.08,,30,,FALSE,None,3450,,,2014-11-25T18:41:40.000Z,2014-11-25T23:30:40.000Z,,,1,,QF77,132.5,,47,,,28.6858999,,,8.912952443,,141.7921685,,,-25.0849244,,UCDAVISSIF,,,,Results,Technicianmr,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4515,1,11/25/2014,QUADRA,HAKAI,OCEANOGRAPHY;FGS;OCEANOGRAPHY,QOMA;B;QOMB,1,QU24,M,50.03,-125.08,,100,,FALSE,None,3450,,,2014-11-25T18:41:40.000Z,2014-11-25T23:30:40.000Z,,,1,,QF78,132,,47,,,2.995053902,,,5.769999139,,28.43865669,,,-23.38103626,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4515,1,11/25/2014,QUADRA,HAKAI,OCEANOGRAPHY;FGS;OCEANOGRAPHY,QOMA;B;QOMB,1,QU24,M,50.03,-125.08,,5,,FALSE,None,3200,,,2014-11-25T18:41:40.000Z,2014-11-25T23:30:40.000Z,,,1,,QF80,131.9,,47,,,8.447492156,,,7.463134458,,93.74436822,,,-27.42733513,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,4515,1,11/25/2014,QUADRA,HAKAI,OCEANOGRAPHY;FGS;OCEANOGRAPHY,QOMA;B;QOMB,1,QU24,M,50.03,-125.08,,0,,FALSE,None,3550,,,2014-11-25T18:41:40.000Z,2014-11-25T23:30:40.000Z,,,1,,QF81,131.4,,47,,,32.64864353,,,5.788272195,,199.3445718,,,-25.36562907,,UCDAVISSIF,,,,Results,Technicianmr,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,13,1,12/2/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,240,,FALSE,None,3300,,,2014-12-02T17:30:23.000Z,2014-12-02T18:30:51.000Z,,,1,,QF89,132.6,,47,,,20.93242087,,,8.586494066,,165.0293507,,,-24.58670485,,UCDAVISSIF,,,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,13,1,12/2/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,5,,FALSE,None,3600,,,2014-12-02T17:30:23.000Z,2014-12-02T18:30:51.000Z,,,1,,QF90,131.5,,47,,,23.29076635,,,8.072248296,,132.9245915,,,-26.44254247,,UCDAVISSIF,,,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,13,1,12/2/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,100,,FALSE,None,3800,,,2014-12-02T17:30:23.000Z,2014-12-02T18:30:51.000Z,,,1,,QF91,130.6,,47,,,11.01691316,,,7.042657991,,78.39892022,,,-23.96608799,,UCDAVISSIF,SVC,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,13,1,12/2/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,30,,FALSE,None,3650,,,2014-12-02T17:30:23.000Z,2014-12-02T18:30:51.000Z,,,1,,QF92,130.7,,47,,,13.01857234,,,6.841385561,,88.70048389,,,-24.62763686,,UCDAVISSIF,SVC,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,13,1,12/2/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,0,,FALSE,None,2900,,,2014-12-02T17:30:23.000Z,2014-12-02T18:30:51.000Z,,,1,,QF93,130,,47,,,18.58432057,,,6.456136594,,119.4895802,,,-26.4471913,,UCDAVISSIF,,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,21,1,12/11/2014,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMB;QOMA,1,QU24,M,50.03,-125.08,,30,,FALSE,None,3000,,,2014-12-11T17:32:41.000Z,2014-12-11T18:42:28.000Z,,,1,,QF13,131.6,,47,,,10.31451299,,,6.545812701,,74.50583553,,,-25.26511391,,UCDAVISSIF,SVC,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,21,1,12/11/2014,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMB;QOMA,1,QU24,M,50.03,-125.08,,5,,FALSE,None,3000,,,2014-12-11T17:32:41.000Z,2014-12-11T18:42:28.000Z,,,1,,QF37,132.9,,47,,,12.77873499,,,6.114793425,,93.11336157,,,-24.17496202,,UCDAVISSIF,SVC,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,21,1,12/11/2014,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMB;QOMA,1,QU24,M,50.03,-125.08,,240,,FALSE,None,3000,,,2014-12-11T17:32:41.000Z,2014-12-11T18:42:28.000Z,,,1,,QF39,130.8,,47,,,15.2173002,,,5.885008364,,92.36003285,,,-22.99305432,,UCDAVISSIF,SVC,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,21,1,12/11/2014,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMB;QOMA,1,QU24,M,50.03,-125.08,,100,,FALSE,None,3000,,,2014-12-11T17:32:41.000Z,2014-12-11T18:42:28.000Z,,,1,,QF40,131.2,,47,,,9.582729903,,,8.716561236,,64.4644595,,,-23.74313052,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,21,1,12/11/2014,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMB;QOMA,1,QU24,M,50.03,-125.08,,0,,FALSE,None,3000,,,2014-12-11T17:32:41.000Z,2014-12-11T18:42:28.000Z,,,1,,QF41,131.6,,47,,,17.97995978,,,6.262954148,,129.3189236,,,-24.20766793,,UCDAVISSIF,,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,29,1,12/16/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,100,,FALSE,None,3000,,,2014-12-16T16:30:51.000Z,2014-12-16T18:00:03.000Z,,Bryn;Rebecca;Katie,1,,QF100,131.6,,47,,,14.87134759,,,5.548646808,,99.12021124,,,-24.03173772,,UCDAVISSIF,SVC,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,29,1,12/16/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,240,,FALSE,None,3000,,,2014-12-16T16:30:51.000Z,2014-12-16T18:00:03.000Z,,Bryn;Rebecca;Katie,1,,QF101,131.1,,47,,,12.57699866,,,6.749895971,,88.76341788,,,-22.59965394,,UCDAVISSIF,SVC,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,29,1,12/16/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,0,,FALSE,None,3000,,,2014-12-16T16:30:51.000Z,2014-12-16T18:00:03.000Z,,Bryn;Rebecca;Katie,1,,QF97,130.4,,47,,,29.71254304,,,7.200868649,,169.3433201,,,-26.28191847,,UCDAVISSIF,,,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,29,1,12/16/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,5,,FALSE,None,3000,,,2014-12-16T16:30:51.000Z,2014-12-16T18:00:03.000Z,,Bryn;Rebecca;Katie,1,,QF98,132,,47,,,15.88797967,,,6.455093687,,93.07293075,,,-26.31476702,,UCDAVISSIF,SVC,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,29,1,12/16/2014,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,30,,FALSE,None,3000,,,2014-12-16T16:30:51.000Z,2014-12-16T18:00:03.000Z,,Bryn;Rebecca;Katie,1,,QF99,132.5,,47,,,15.63812967,,,5.566732976,,108.8302594,,,-24.79266215,,UCDAVISSIF,,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,41,1,1/6/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,5,,FALSE,None,3250,,,2015-01-06T17:07:02.000Z,2015-01-06T22:45:19.000Z,,Rebecca;Katie;Other,1,,QF104,130,,47,,,6.258730521,,,7.716122982,,38.59728633,,,-26.1100759,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,41,1,1/6/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,30,,FALSE,None,3450,,,2015-01-06T17:07:02.000Z,2015-01-06T22:45:19.000Z,,Rebecca;Katie;Other,1,,QF105,130.8,,47,,,3.501449938,,,6.494254591,,41.07305781,,,-25.59887602,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,41,1,1/6/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,100,,FALSE,None,3225,,,2015-01-06T17:07:02.000Z,2015-01-06T22:45:19.000Z,,Rebecca;Katie;Other,1,,QF106,132.4,,47,,,4.695893763,,,10.78817158,,32.3205595,,,-22.70796868,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,41,1,1/6/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,240,,FALSE,None,3800,,,2015-01-06T17:07:02.000Z,2015-01-06T22:45:19.000Z,,Rebecca;Katie;Other,1,,QF107,131.6,,47,,,5.36081584,,,7.042402302,,40.4995133,,,-22.4511185,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,41,1,1/6/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,0,,FALSE,None,3200,,,2015-01-06T17:07:02.000Z,2015-01-06T22:45:19.000Z,,Rebecca;Katie;Other,1,,QF108,132.4,,47,,,6.467104576,,,7.196342005,,41.52498284,,,-26.61008549,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,81,1,1/13/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,30,,FALSE,None,2500,,,2015-01-13T16:54:42.000Z,2015-01-13T20:45:09.000Z,,Kate;Rebecca;Other,1,,QF120,131.5,,47,,,14.13265312,,,6.669739251,,95.64937915,,,-26.68081293,,UCDAVISSIF,SVC,SVC,,Results,Technicianmr,,1: Checked by KP
+2: C: Precision decreases for samples containing less than 100ugC. N: Precision decreases for samples containing less than 20ugN. Results checked by RP.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,81,1,1/13/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,100,,FALSE,None,2500,,,2015-01-13T16:54:42.000Z,2015-01-13T20:45:09.000Z,,Kate;Rebecca;Other,1,,QF121,131.7,,47,,,10.57976298,,,7.995273734,,113.5873764,,,-27.3269011,,UCDAVISSIF,,SVC,,Results,Technicianmr,,1: Checked by KP
+2: N: Precision decreases for samples containing less than 20ugN. Results checked by RP.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,81,1,1/13/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,0,,FALSE,None,2500,,,2015-01-13T16:54:42.000Z,2015-01-13T20:45:09.000Z,,Kate;Rebecca;Other,1,,QF123,130,,47,,,27.43654303,,,6.924775189,,178.5575904,,,-27.18287946,,UCDAVISSIF,,,,Results,Technicianmr,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,81,1,1/13/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,5,,FALSE,None,2500,,,2015-01-13T16:54:42.000Z,2015-01-13T20:45:09.000Z,,Kate;Rebecca;Other,1,,QF124,130.6,,47,,,23.82771979,,,6.005799453,,93.99110127,,,-26.98987621,,UCDAVISSIF,SVC,,,Results,Technicianmr,,1: Checked by KP
+2: C: Precision decreases for samples containing less than 100ugC. Results checked by RP.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,81,1,1/13/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,240,,FALSE,None,2000,,,2015-01-13T16:54:42.000Z,2015-01-13T20:45:09.000Z,,Kate;Rebecca;Other,1,,QF125,131.8,,47,,,15.2582972,,,7.451103876,,87.2176961,,,-24.11039464,,UCDAVISSIF,SVC,SVC,,Results,Technicianmr,,1: Checked by KP
+2: C: Precision decreases for samples containing less than 100ugC. N: Precision decreases for samples containing less than 20ugN. Results checked by RP.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,93,1,1/21/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,5,,FALSE,None,3000,,,2015-01-21T17:13:03.000Z,2015-01-21T23:48:39.000Z,,Kate;Rebecca;Megan,1,,QF128,132.7,,47,,,16.62190443,,,6.377946202,,106.6526013,,,-25.53812203,,UCDAVISSIF,,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,93,1,1/21/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,30,,FALSE,None,2500,,,2015-01-21T17:13:03.000Z,2015-01-21T23:48:39.000Z,,Kate;Rebecca;Megan,1,,QF129,132.6,,47,,,9.319767721,,,5.200529048,,138.4260296,,,-25.43632277,,UCDAVISSIF,,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,93,1,1/21/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,240,,FALSE,None,3000,,,2015-01-21T17:13:03.000Z,2015-01-21T23:48:39.000Z,,Kate;Rebecca;Megan,1,,QF130,131.3,,47,,,10.00887252,,,5.742511994,,73.52370543,,,-23.06679816,,UCDAVISSIF,SVC,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,93,1,1/21/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,0,,FALSE,None,3000,,,2015-01-21T17:13:03.000Z,2015-01-21T23:48:39.000Z,,Kate;Rebecca;Megan,1,,QF131,131.9,,47,,,14.09867371,,,6.150628248,,93.17857992,,,-26.88545151,,UCDAVISSIF,SVC,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,93,1,1/21/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,100,,FALSE,None,3000,,,2015-01-21T17:13:03.000Z,2015-01-21T23:48:39.000Z,,Kate;Rebecca;Megan,1,,QF132,130.6,,47,,,7.829775032,,,5.79565985,,60.7868758,,,-23.40741524,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,149,1,1/28/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,5,,FALSE,None,2000,,,2015-01-28T16:52:34.000Z,2015-01-28T21:12:45.000Z,,Rebecca;Other,1,,QF169,38.9,,25,,,9.367788493,,,6.375137443,,71.58884142,,,-26.73397907,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,149,1,1/28/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,240,,FALSE,None,2000,,,2015-01-28T16:52:34.000Z,2015-01-28T21:12:45.000Z,,Rebecca;Other,1,,QF170,38.4,,25,,,7.245280899,,,8.520390576,,52.98519143,,,-22.93596803,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,149,1,1/28/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,100,,FALSE,None,2000,,,2015-01-28T16:52:34.000Z,2015-01-28T21:12:45.000Z,,Rebecca;Other,1,,QF171,37.8,,25,,,5.449583995,,,5.652658544,,41.99549855,,,-23.36948461,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,149,1,1/28/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,0,,FALSE,None,2000,,,2015-01-28T16:52:34.000Z,2015-01-28T21:12:45.000Z,,Rebecca;Other,1,,QF172,38.2,,25,,,7.228852341,,,6.337750166,,63.55954781,,,-26.83352917,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,149,1,1/28/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,30,,FALSE,None,2000,,,2015-01-28T16:52:34.000Z,2015-01-28T21:12:45.000Z,,Rebecca;Other,1,,QF173,37.8,,25,,,5.474400126,,,6.613675534,,39.06239145,,,-25.83598534,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,160,1,2/3/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,100,,FALSE,None,2000,,,2015-02-03T17:00:43.000Z,2015-02-03T21:33:01.000Z,,Kate;Katie;Other,1,,QF177,38.1,,25,,,12.04138869,,,8.39379692,,90.39860891,,,-24.26392093,,UCDAVISSIF,SVC,SVC,,Results,Technicianmr,,1: Checked by KP
+2: C: Precision decreases for samples containing less than 100ugC. N: Precision decreases for samples containing less than 20ugN. Results checked by RP.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,160,1,2/3/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,5,,FALSE,None,2000,,,2015-02-03T17:00:43.000Z,2015-02-03T21:33:01.000Z,,Kate;Katie;Other,1,,QF178,38.6,,25,,,35.46000867,,,6.003603706,,220.2676029,,,-28.30010781,,UCDAVISSIF,,,,Results,Technicianmr,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,160,1,2/3/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,30,,FALSE,None,2000,,,2015-02-03T17:00:43.000Z,2015-02-03T21:33:01.000Z,,Kate;Katie;Other,1,,QF194,38.1,,25,,,5.968434559,,,7.10608586,,48.04526074,,,-26.52497788,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,160,1,2/3/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,240,,FALSE,None,1000,,,2015-02-03T17:00:43.000Z,2015-02-03T21:33:01.000Z,,Kate;Katie;Other,1,,QF195,38.1,,25,,,42.72444221,,,13.07318402,,234.7442701,,,-21.84303656,,UCDAVISSIF,,,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,160,1,2/3/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY,QOMA;QOMB,1,QU24,M,50.03,-125.08,,0,,FALSE,None,1900,,,2015-02-03T17:00:43.000Z,2015-02-03T21:33:01.000Z,,Kate;Katie;Other,1,,QF196,37.7,,25,,,14.61695517,,,6.086079655,,108.1044662,,,-25.57330632,,UCDAVISSIF,,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,173,1,2/11/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,240,,FALSE,None,1700,,,2015-02-11T17:43:13.000Z,2015-02-11T17:43:11.000Z,,Bryn;Katie;Rebecca,1,,QF182,38.1,,25,,,3.316916894,,,5.731670191,,34.38500362,,,-23.71727525,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,173,1,2/11/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,240,,TRUE,Immersion,1700,,,2015-02-11T17:43:13.000Z,2015-02-11T17:43:11.000Z,,,1,,QF183,37.9,,25,,,8.140166345,,,10.36332026,,65.97571061,,,-25.09055075,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,173,1,2/11/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,100,,FALSE,None,1800,,,2015-02-11T17:43:13.000Z,2015-02-11T17:43:11.000Z,,Bryn;Katie;Rebecca,1,,QF184,37.5,,25,,,3.460519949,,,4.627965019,,29.97421234,,,-23.66836308,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,173,1,2/11/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,5,,FALSE,None,1000,,,2015-02-11T17:43:13.000Z,2015-02-11T17:43:11.000Z,,Bryn;Katie;Rebecca,1,,QF186,38.1,,25,,,4.30489368,,,4.951140569,,30.26831575,,,-27.27003445,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,173,1,2/11/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,5,,TRUE,Immersion,1000,,,2015-02-11T17:43:13.000Z,2015-02-11T17:43:11.000Z,,,1,,QF187,38.8,,25,,,15.07121729,,,3.633329311,,62.00236309,,,-27.18746876,,UCDAVISSIF,SVC,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,173,1,2/11/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,30,,FALSE,None,1500,,,2015-02-11T17:43:13.000Z,2015-02-11T17:43:11.000Z,,Bryn;Katie;Rebecca,1,,QF188,38,,25,,,7.349060766,,,3.080992167,,42.907917,,,-25.63856469,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,173,1,2/11/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,30,,TRUE,Immersion,1500,,,2015-02-11T17:43:13.000Z,2015-02-11T17:43:11.000Z,,,1,,QF189,38.2,,25,,,11.73596545,,,4.35950589,,54.66454068,,,-25.71667978,,UCDAVISSIF,SVC,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,173,1,2/11/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,0,,TRUE,Immersion,1700,,,2015-02-11T17:43:13.000Z,2015-02-11T17:43:11.000Z,,,1,,QF190,39,,25,,,22.2171022,,,3.51524062,,123.9333605,,,-27.71674512,,UCDAVISSIF,,,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,200,1,2/18/2015,QUADRA,HAKAI,OCEANOGRAPHY;OCEANOGRAPHY;OCEANOGRAPHY,QOMA2;QOMA1;QOMA,1,QU24,M,50.03,-125.08,,100,,FALSE,None,,,,2015-02-18T17:31:29.000Z,2015-02-18T17:30:05.000Z,,,1,,QF222,36.1,,25,,,,,,,,31.68235233,,,-26.75687893,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: TRIAL RUN FOR QOMA1;2;;MICROBIAL: Four cell counts were taken for each depth at station QU24. Duplicates for 1 mL and 2 mL of sample were taken both with 40 uL of Gluteraldehyde.;;;POP DATA:;Surface-QF226 (990 ml) ;5-QF227 (1000 ml);10-QF228 (1000 ml);30-QF229 (1000 ml);100-QF230 (1000ml);240-QF231 (1000ml);;HPLC: volumes are approximate; filters not blotted before freezing
+2: Results checked by RP.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3: iPad form glitch; no volume data available.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4: iPad form glitch; no volume data available. Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,188,1,2/24/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,240,,TRUE,Immersion,500,,,2015-02-24T17:00:22.000Z,2015-02-24T23:31:00.000Z,,Kate;Katie;Midoli;Rebecca,1,,QF245,36.5,,25,,,7.496265601,,,6.598635168,,55.89464594,,,-23.05753533,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Depth entered as 0m; assumed to be 240 based on order in marine lab breakout sheet
+2: Depth entered as 0m; assumed to be 240 based on order in marine lab breakout sheet. Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3: Results checked by RP.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4: Depths are not accurate. Phyto bloom,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,188,1,2/24/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,240,,FALSE,None,500,,,2015-02-24T17:00:22.000Z,2015-02-24T23:31:00.000Z,,Kate;Katie;Midoli;Rebecca,1,,QF246,37.7,,25,,,6.430095567,,,6.208393969,,52.01188828,,,-22.05906551,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Depth entered as 0m; assumed to be 240 based on order in marine lab breakout sheet
+2: Depth entered as 0m; assumed to be 240 based on order in marine lab breakout sheet. Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3: Results checked by RP.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4: Depths are not accurate. Phyto bloom,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,188,1,2/24/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,100,,TRUE,Immersion,1500,,,2015-02-24T17:00:22.000Z,2015-02-24T23:31:00.000Z,,Kate;Katie;Midoli;Rebecca,1,,QF247,37.6,,25,,,2.255414918,,,8.52026739,,28.79813029,,,-24.10583677,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3: Depths are not accurate. Phyto bloom,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,188,1,2/24/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,100,,FALSE,None,1500,,,2015-02-24T17:00:22.000Z,2015-02-24T23:31:00.000Z,,Kate;Katie;Midoli;Rebecca,1,,QF248,37.2,,25,,,2.765475544,,,8.170012905,,28.03294842,,,-23.96181685,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3: Depths are not accurate. Phyto bloom,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,188,1,2/24/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,0,,FALSE,None,500,,,2015-02-24T17:00:22.000Z,2015-02-24T23:31:00.000Z,,Kate;Katie;Midoli;Rebecca,1,,QF249,37.5,,25,,,35.65253676,,,6.144463069,,182.5122644,,,-19.58585962,,UCDAVISSIF,,,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3: Depths are not accurate. Phyto bloom,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,188,1,2/24/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,0,,TRUE,Immersion,500,,,2015-02-24T17:00:22.000Z,2015-02-24T23:31:00.000Z,,Kate;Katie;Midoli;Rebecca,1,,QF250,36.5,,25,,,85.62343618,,,5.42510962,,400.143818,,,-19.05173729,,UCDAVISSIF,,,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3: Depths are not accurate. Phyto bloom,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,188,1,2/24/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,30,,TRUE,Immersion,1000,,,2015-02-24T17:00:22.000Z,2015-02-24T23:31:00.000Z,,Kate;Katie;Midoli;Rebecca,1,,QF251,36.3,,25,,,9.133304766,,,6.451527562,,49.02242592,,,-24.23555591,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3: Depths are not accurate. Phyto bloom,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,188,1,2/24/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,30,,FALSE,None,1000,,,2015-02-24T17:00:22.000Z,2015-02-24T23:31:00.000Z,,Kate;Katie;Midoli;Rebecca,1,,QF252,36.1,,25,,,2.811429331,,,6.203743701,,22.08954572,,,-23.23908525,,UCDAVISSIF,SVC,SVD,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3: Depths are not accurate. Phyto bloom,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,188,1,2/24/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,5,,TRUE,Immersion,200,,,2015-02-24T17:00:22.000Z,2015-02-24T23:31:00.000Z,,Kate;Katie;Midoli;Rebecca,1,,QF255,36.1,,25,,,42.55370625,,,5.210795518,,183.9432126,,,-19.10409779,,UCDAVISSIF,,,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3: Depths are not accurate. Phyto bloom,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,188,1,2/24/2015,QUADRA,HAKAI,OCEANOGRAPHY,QOMA,1,QU24,M,50.03,-125.08,,5,,FALSE,None,200,,,2015-02-24T17:00:22.000Z,2015-02-24T23:31:00.000Z,,Kate;Katie;Midoli;Rebecca,1,,QF256,36.6,,25,,,15.1018435,,,5.732952002,,74.88789557,,,-19.64778231,,UCDAVISSIF,SVC,SVC,,Results,Technician,,1: Results checked by RP.
+2: Checked by KP,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+3: Depths are not accurate. Phyto bloom,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

@@ -1,0 +1,210 @@
+---
+title: "POC Conversion"
+output: html_notebook
+---
+
+```{r}
+#Upload packages -  go through these to see which apply.
+library(tidyverse)
+library(here)
+library(readxl)
+library(gsw)
+```
+
+```{r}
+#POC data from QU39
+poc <- read_csv(here("files", "2024-03-20_HakaiData_poms.csv"))
+
+#POC data from QU24 for the beginning of the year 2015
+poc_24 <- read_csv(here("files", "qu24_poms2.csv"))
+
+#Download all CTD data from QU39
+ctd_full <- read_csv(here("files_big", "ctd_2015_2023.csv"))
+
+#Download QU24 CTD data from early 2015 to catch large and early bloom
+ctd_qu24 <- read_csv(here("files", "ctd_2015_qu24.csv"))
+```
+
+```{r}
+#Looking into the different cruises performed
+ctd_cruise <- ctd_full %>% 
+  distinct(Cruise)
+
+#Creating a list of surveys that I am pretty confident do not match with the bottle samples
+cruise_exclude <- c("Reconnaissance", "NOAA", "PICES", "BIOSIEGE",
+                    "ZOOPSPRINT", "MARIA", "TEST",
+                    "GLIDER CAMP DEPLOYMENT DAY")
+
+#Filtering out cruises in the above list to hopefully limit some of the duplicates
+ctd <- ctd_full %>% 
+  filter(!Cruise %in% cruise_exclude)
+
+#checking that the correct cruises were retained.
+ctd_cruise_check <- ctd %>%
+  distinct(Cruise)
+```
+
+```{r}
+#Wrangling the CTD data - renaming some of the key columns/variables that I will be working with
+ctd <- ctd_full %>% 
+  select(cast_pk = `Cast PK`,
+         date_time = `Measurement time`,
+         station = Station,
+         Latitude,
+         Longitude,
+         pres = `Pressure (dbar)`,
+         sal = `Salinity (PSU)`,
+         temp = `Temperature (deg C)`)
+
+#Doing the same for QU24
+ctd_qu24 <- ctd_qu24 %>% 
+  select(cast_pk = `Cast PK`,
+         date_time = `Measurement time`,
+         station = Station,
+         Latitude,
+         Longitude,
+         pres = `Pressure (dbar)`,
+         sal = `Salinity (PSU)`,
+         temp = `Temperature (deg C)`)
+
+#Making a single file including data for QU24 and QU39
+ctd <- rbind(ctd, ctd_qu24)
+
+
+#Adding a date column
+ctd <- ctd %>% 
+  mutate(date = lubridate::date(date_time)) %>% 
+  relocate(date, .after = date_time)
+
+#Looking at coordinates for the CTD dataset - are there any missing? Mssing values need to be filled for later calculations
+ctd_coord <- ctd %>% 
+  distinct(station, Latitude, Longitude)
+
+#Filling in missing latitude with coodinates from station master list
+ctd <- ctd %>% 
+  mutate(Latitude = 50.03001,
+         Longitude =  -125.0989)
+```
+
+```{r}
+#Performing GSW calculations to derive density 
+
+#Calculating absolute salinity
+SA <- gsw_SA_from_SP(ctd$sal, ctd$pres, ctd$Longitude, ctd$Latitude)
+
+#Converting absolute salinity output to a dataframe
+SA <- as.data.frame(SA)
+
+#Calculating conservative temperature
+CT <- gsw_CT_from_t(SA$SA, ctd$temp, ctd$pres)
+
+#Converting conservative temperature output to a dataframe
+CT <- as.data.frame(CT)
+
+#Calculating Density
+rho = gsw_rho(SA$SA, CT$CT, ctd$pres)
+
+#Converting Density to a dataframe
+rho <- as.data.frame(rho)
+
+#Binding calculations to ctd dataframe
+ctd <- cbind(ctd, SA, CT, rho)
+```
+
+```{r}
+#Filter for only 5m depth data
+ctd_5 <- ctd %>% 
+  filter(pres == 5) %>% 
+  select(cast_pk, date, date_time, station, rho)
+
+#Looking into duplicate casts
+ctd_5_dup <- ctd_5 %>% 
+  group_by(date) %>% 
+  mutate(n = n()) %>% 
+  ungroup() %>% 
+  filter(n > 1) %>% 
+  group_by(date) %>% 
+  mutate(sd = sd(rho)) %>% 
+  ungroup()
+
+#For now, I am going to do a daily average 
+ctd_5_dm <- ctd_5 %>% 
+  group_by(date) %>% 
+  summarise(rho_dm = mean(rho),
+            rho_sd = sd(rho)) %>% 
+  ungroup()
+```
+
+```{r}
+#Creating a list of surveys that are not oceanography
+survey_exclude <- c("Reconnaissance", "NOAA", "PICES", "BIOSIEGE",
+                    "ZOOPSPRINT", "MARIA", "TEST",
+                    "GLIDER CAMP DEPLOYMENT DAY")
+
+#Removing non-ocean surveys
+poc <- poc %>% 
+  filter(!survey %in% survey_exclude)
+```
+
+
+```{r}
+#Selecting only 5m data from QU39 where the filter was acidified
+poc <- poc %>% 
+  filter(line_out_depth == 5 & acidified == TRUE) %>%  
+  select(date, poc = ug_c) 
+
+
+
+#Only non-acidified data available for QU24 - either exclude or include assuming very little PIC contribution
+poc_24_join <- poc_24 %>% 
+  mutate(date = lubridate::mdy(date)) %>% 
+  filter(line_out_depth == 5 & acidified == FALSE) %>% 
+  select(date, poc = ug_c) %>% 
+  filter(date > "2015-01-01" & date < "2015-02-24")
+
+
+#Joining data from QU24 and QU39 into single sheet
+poc <- rbind(poc, poc_24_join)
+
+#Dropping NA values and arranging by date
+poc <- poc %>% 
+  drop_na() %>% 
+  arrange(date)
+```
+
+```{r}
+#trying to merge POC with density data
+poc_join <- poc %>% 
+  left_join(ctd_5_dm) %>% 
+  filter(!is.na(rho_dm)) %>% 
+  rename(rho_kg_m3 = rho_dm)
+```
+```{r}
+#Attempting to convert POC to umol/kg
+poc_conv <- poc_join %>%
+  mutate(poc_g = poc/1000,
+         poc_mol = poc_g/58.8939,
+         poc_umol = poc_mol*10^6,
+         poc_umol_kg = poc_umol/rho_kg_m3)
+
+poc_export <- poc_conv %>% 
+  select(date, poc, poc_umol, poc_umol_kg)
+```
+
+```{r}
+poc_conv %>% 
+  ggplot(aes(x = date, y = poc)) +
+  geom_point() +
+  geom_line()
+
+poc_dup <- poc_conv %>% 
+  group_by(date) %>% 
+  mutate(n = n()) %>% 
+  ungroup() %>% 
+  filter(n > 1)
+```
+
+```{r}
+write.csv(poc_export, here("outputs", "poc_conversion_2024-03-20.csv"))
+```
+
