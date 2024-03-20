@@ -1,0 +1,339 @@
+---
+title: "SOPO Presentation"
+output: html_notebook
+---
+```{r}
+#Upload packages -  go through these to see which apply.
+library(tidyverse)
+library(here)
+library(patchwork)
+library(readxl)
+```
+
+```{r}
+#Upload the full 5m chemtax timeseries - processing in same way as manuscript
+chem <- read_csv(here("files", "combined_2024-02-07.csv"))
+
+```
+
+```{r}
+#Working with chemtax data to make it easy to plot
+
+#Making the date column a date format
+chem <- chem %>% 
+  mutate(date2 = lubridate::mdy(Date))
+
+#Selecting appropriate columns and renaming to easy to work with names
+chem <- chem %>% 
+  select(date = date2, depth, cyan = Cyanobacteria, hapt = Hapto, 
+         GA = `Prasinophytes-3`, cryp = Cryptophytes,
+         dino = `Dinoflagellates-1`, dict = Dictyo, diat = `Diatoms-1`)
+
+#Pivoting to long/tidy for plotting in ggplot
+chem_long <- chem %>% 
+  pivot_longer(c(cyan:diat), names_to = "group", values_to = "contribution")
+
+#Calculating TChla for each sample
+chem_long <- chem_long %>% 
+  group_by(date, group) %>% 
+  summarise(contribution = mean(contribution)) %>% 
+  ungroup() %>% 
+  group_by(date) %>% 
+  mutate(tchla = sum(contribution)) %>% 
+  ungroup()
+
+#checking to see if there are any duplicates - there were replicates taken for DFO comparisons. None found because I already averaged these for the manuscript.
+chem_dup <- chem_long %>%
+  distinct(date, tchla) %>% 
+  group_by(date) %>% 
+  mutate(dup = n()) %>% 
+  ungroup() %>% 
+  filter(dup > 1)
+
+#Good to move forward
+```
+
+
+```{r}
+#Setting plotting order phytoplankton groups
+
+#Order phytoplankton groups roughly from smallest to largest - create order list
+order_chem <- c("cyan", "hapt", "GA", "cryp",
+                   "dino", "dict", "diat")
+
+#Chemtax full data - Specify order of phyto groups for figures
+chem_long <- arrange(mutate(chem_long,
+                                group = factor(group,
+                                levels = order_chem)))
+
+```
+
+```{r}
+#Set Color palette for plotting. Currently based on QU39 manuscript. Brewer has some good ones for R style.
+palette <- c("#ff8000", #1 - Diatoms (orange)
+             "#ff99c7", #2 - Dictyochophytes (pink)
+             #"#4d6600", #3 - Raphidophytes (dark green)
+             "#ff0000", #4 - Dinoflagellates (Red)
+             "#ffff00", #5 - Cryptophytes (yellow)
+             "#00ff00", #6 - Chlorophyta (light green)
+             "#7d4dcc", #7 - Haptophytes (purple)
+             "#000000") #8 - Cyanobacteria (black)
+```
+
+
+
+```{r}
+#Doing the cumulative sum for each year
+
+#Calculating cumulative sum TChla
+cu_sum <- chem_long %>%
+  select(date, tchla) %>% 
+  distinct() %>% 
+  mutate(year = lubridate::year(date), 
+         doy = lubridate::yday(date)) %>% 
+  filter(!is.na(tchla)) %>% 
+  mutate(median_all_tchla = median(tchla)) %>% 
+  group_by(year) %>% 
+  mutate(bm_total = tchla - median_all_tchla,
+         bm_sum_total = cumsum(bm_total)) %>%  
+  ungroup() %>% 
+  mutate(doy = lubridate::yday(date))
+```
+
+```{r}
+#Joining the cumulative sum with the chemtax data for plotting.
+chem_join_plot <- chem_long %>% 
+  left_join(cu_sum) 
+```
+
+```{r}
+#Setting a scale factor for the right-y axis in the CHEMTAX and annual integration plot - next chunk
+scale_int <- 5
+```
+
+```{r}
+chem_full <- chem_join_plot %>%
+  mutate(year = lubridate::year(date),
+         yday = lubridate::yday(date)) %>%
+  ggplot() +
+  geom_area(data = filter(chem_join_plot, date > as.Date("2015-01-01") &
+                            date < as.Date("2015-10-07")),
+            aes(date, contribution, fill = fct_rev(group)),
+            alpha = 1, color = "black", size = 0.1) +
+  geom_area(data = filter(chem_join_plot, date > as.Date("2015-10-07") &
+                            date < as.Date("2015-11-04")),
+            aes(date, contribution, fill = fct_rev(group)),
+            alpha = 1, color = "black", size = 0.1) +
+  geom_bar(data = filter(chem_join_plot, date == as.Date("2015-11-03")),
+           aes(date, contribution, fill = fct_rev(group)),
+           alpha = 1, color = "black", width = 10, size = 0.1,  
+           position = "stack", stat = "identity") +
+  geom_area(data = filter(chem_join_plot, date > as.Date("2015-11-04") &
+                            date < as.Date("2020-03-19")),
+            aes(date, contribution, fill = fct_rev(group)),
+            alpha = 1, color = "black", size = 0.1) +
+  geom_area(data = filter(chem_join_plot, date > as.Date("2020-03-19")),
+            aes(date, contribution, fill = fct_rev(group)),
+            alpha = 1, color = "black", size = 0.1) +
+  geom_point(aes(date, tchla), size = 0.3) +
+  scale_fill_manual(values = palette,
+                    labels = c("Diat", "Dict", "Dino", "Cryt", "GA",
+                               "Hapt", "Cyan")) +
+  geom_line(data = filter(chem_join_plot, date > as.Date("2015-02-23") &
+                            date < as.Date("2015-10-06")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2016-04-01") &
+                            date <= as.Date("2016-10-02")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2017-04-20") &
+                            date <= as.Date("2017-10-11")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2018-03-20") &
+                            date <= as.Date("2018-10-30")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2019-03-12") &
+                            date <= as.Date("2019-11-13")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2020-03-18") &
+                            date <= as.Date("2020-09-22")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2021-02-23") &
+                            date <= as.Date("2021-10-19")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2022-02-18") &
+                            date <= as.Date("2022-10-26")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2023-03-21") &
+                            date <= as.Date("2023-11-07")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  scale_y_continuous(sec.axis = sec_axis(~.*scale_int,
+                                         name = bquote("Annual Int. TChla (mg" ~ m^-2*")"))) +
+  scale_x_date(limits = as.Date(c("2015-01-01", "2024-01-01")),
+               expand = c(0, 0),
+               date_breaks = "years", date_labels = "%b%y") +
+  theme_bw() +
+  labs(y = bquote("Phyto. Comp. (mg" ~ m^-3*")"),
+       fill = "Group") +
+  theme(panel.grid.major.x =  element_line(color = "darkgrey", size = 0.5),
+        panel.grid.minor.x =  element_line(color = "darkgrey", size = 0.5),
+        legend.position = "top",
+        legend.direction = "horizontal",
+        legend.title = element_blank(),
+        text = element_text(size = 30), #35
+        axis.text = element_text(color = "black"),
+        axis.title.x = element_blank()) +
+  guides(fill = guide_legend(nrow = 1, reverse = TRUE))
+
+ggsave(here("figures", "timeseries_5m_chemtax_integrated.png"),
+        width = 16, height = 6, dpi = 300)
+```
+
+```{r}
+chem_full <- chem_join_plot %>%
+  mutate(year = lubridate::year(date),
+         yday = lubridate::yday(date)) %>%
+  ggplot() +
+  geom_area(data = filter(chem_join_plot, date > as.Date("2015-01-01") &
+                            date < as.Date("2015-10-07")),
+            aes(date, contribution, fill = fct_rev(group)),
+            alpha = 0.9) +
+  geom_area(data = filter(chem_join_plot, date > as.Date("2015-10-07") &
+                            date < as.Date("2015-11-04")),
+            aes(date, contribution, fill = fct_rev(group)),
+            alpha = 0.9) +
+  geom_bar(data = filter(chem_join_plot, date == as.Date("2015-11-03")),
+           aes(date, contribution, fill = fct_rev(group)),
+           alpha = 0.9, color = "black", width = 10, size = 0.1,  
+           position = "stack", stat = "identity") +
+  geom_area(data = filter(chem_join_plot, date > as.Date("2015-11-04") &
+                            date < as.Date("2020-03-19")),
+            aes(date, contribution, fill = fct_rev(group)),
+            alpha = 0.9) +
+  geom_area(data = filter(chem_join_plot, date > as.Date("2020-03-19")),
+            aes(date, contribution, fill = fct_rev(group)),
+            alpha = 0.9) +
+  # geom_point(aes(date, tchla), size = 0.3) +
+  # scale_fill_manual(values = palette,
+  #                   labels = c("Diat", "Dict", "Dino", "Cryt", "GA",
+  #                              "Hapt", "Cyan")) +
+  ggsci::scale_fill_d3() +
+  geom_line(data = filter(chem_join_plot, date > as.Date("2015-02-23") &
+                            date < as.Date("2015-10-06")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2016-04-01") &
+                            date <= as.Date("2016-10-02")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2017-04-20") &
+                            date <= as.Date("2017-10-11")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2018-03-20") &
+                            date <= as.Date("2018-10-30")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2019-03-12") &
+                            date <= as.Date("2019-11-13")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2020-03-18") &
+                            date <= as.Date("2020-09-22")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2021-02-23") &
+                            date <= as.Date("2021-10-19")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2022-02-18") &
+                            date <= as.Date("2022-10-26")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2023-03-21") &
+                            date <= as.Date("2023-11-07")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  scale_y_continuous(sec.axis = sec_axis(~.*scale_int,
+                                         name = bquote("Annual Int. TChla (mg" ~ m^-2*")")),
+                     expand = c(0, 0)) +
+  scale_x_date(limits = as.Date(c("2015-01-01", "2024-01-01")),
+               expand = c(0, 0),
+               date_breaks = "years", date_labels = "%b%y") +
+  theme_bw() +
+  labs(y = bquote("Phyto. Comp. (mg" ~ m^-3*")"),
+       fill = "Group") +
+  theme(panel.grid.major.x =  element_line(color = "darkgrey", size = 0.5),
+        panel.grid.minor.x =  element_line(color = "darkgrey", size = 0.5),
+        legend.position = "top",
+        legend.direction = "horizontal",
+        legend.title = element_blank(),
+        text = element_text(size = 30), #35
+        axis.text = element_text(color = "black"),
+        axis.title.x = element_blank()) +
+  guides(fill = guide_legend(nrow = 1, reverse = TRUE))
+
+ggsave(here("figures", "timeseries_5m_chemtax_integrated_alternative.png"),
+        width = 16, height = 6, dpi = 300)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
