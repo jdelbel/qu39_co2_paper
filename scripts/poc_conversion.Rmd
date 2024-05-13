@@ -16,7 +16,9 @@ library(gsw)
 poc <- read_csv(here("files", "2024-03-20_HakaiData_poms.csv"))
 
 #POC data from QU24 for the beginning of the year 2015
-poc_24 <- read_csv(here("files", "qu24_poms2.csv"))
+# poc_24 <- read_csv(here("files", "qu24_poms2.csv"))
+poc_24 <- read_csv(here("files", "2024-05-13_HakaiData_poms_qu24.csv"))
+
 
 #Download all CTD data from QU39
 ctd_full <- read_csv(here("files_big", "ctd_2015_2023.csv"))
@@ -157,10 +159,10 @@ poc <- poc %>%
 
 #Only non-acidified data available for QU24 - either exclude or include assuming very little PIC contribution
 poc_24_join <- poc_24 %>% 
-  mutate(date = lubridate::mdy(date)) %>% 
-  filter(line_out_depth == 5 & acidified == FALSE) %>% 
+  # mutate(date = lubridate::mdy(date)) %>% 
+  filter(line_out_depth == 5 & acidified == TRUE & is.na(c_flag)) %>% 
   select(date, poc = ug_c) %>% 
-  filter(date > "2015-01-01" & date < "2015-02-24")
+  filter(date > "2015-01-01")
 
 
 #Joining data from QU24 and QU39 into single sheet
@@ -205,6 +207,6 @@ poc_dup <- poc_conv %>%
 ```
 
 ```{r}
-write.csv(poc_export, here("outputs", "poc_conversion_2024-03-20.csv"))
+write.csv(poc_export, here("outputs", "poc_conversion_2024-05-13.csv"))
 ```
 

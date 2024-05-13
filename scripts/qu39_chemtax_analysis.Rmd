@@ -15,7 +15,7 @@ library(readxl)
 chem <- read_csv(here("files", "combined_2024-02-07.csv"))
 
 #POC data
-poc <- read_csv(here("outputs", "poc_conversion_2024-03-20.csv"))
+poc <- read_csv(here("outputs", "poc_conversion_2024-05-13.csv"))
 ```
 
 Wrangling Data
@@ -85,8 +85,6 @@ palette <- c("#ff8000", #1 - Diatoms (orange)
              "#000000") #8 - Cyanobacteria (black)
 ```
 
-
-
 ```{r}
 #Doing the cumulative sum for each year
 
@@ -116,6 +114,36 @@ cu_sum_pos_tchla <- cu_sum %>%
   slice(which.max(bm_sum_total > 0)) %>% 
   ungroup()
 ```
+
+```{r}
+#Trying the method of Racault et al. (2015) http://dx.doi.org/10.1016/j.rse.2015.01.019
+
+#Calculate the climatological median value +10%
+rac_ts_med <- chem_long %>%
+  select(date, tchla) %>% 
+  distinct() %>% 
+  mutate(year = lubridate::year(date), 
+         doy = lubridate::yday(date)) %>% 
+  filter(!is.na(tchla)) %>% 
+  mutate(median_all_tchla = median(tchla),
+         median_10perc = (median_all_tchla*0.1) + median_all_tchla,
+         anom = tchla - median_10perc) %>% 
+  group_by(year) %>%
+  mutate(cu_sum_anom = cumsum(anom),
+         diff = cu_sum_anom - lag(cu_sum_anom, 1)) 
+```
+
+```{r}
+rac_ts_med %>% 
+  # filter(year == 2016) %>% 
+  ggplot(aes(date, tchla)) +
+  geom_point() +
+  geom_line() +
+  geom_hline(yintercept = 1.29)
+```
+
+
+
 
 ```{r}
 #Joining the cumulative sum with the chemtax data for plotting.
@@ -302,6 +330,91 @@ ggsave(here("figures", "timeseries_5m_chemtax_integrated_alternative.png"),
         width = 16, height = 6, dpi = 300)
 ```
 
+```{r}
+chem_full <- chem_join_plot %>%
+  mutate(year = lubridate::year(date),
+         yday = lubridate::yday(date)) %>%
+  ggplot() +
+  geom_line(data = filter(chem_join_plot, date > as.Date("2015-01-01") &
+                            date < as.Date("2015-10-07") & group == "diat"),
+            aes(date, contribution),
+            size = 1, color = "orange") +
+  geom_line(data = filter(chem_join_plot, date > as.Date("2015-10-07") &
+                            date < as.Date("2015-11-04") & group == "diat"),
+            aes(date, contribution),
+            size = 1, color = "orange") +
+  # geom_point(data = filter(chem_join_plot, date == as.Date("2015-11-03") 
+  #                          & group == "diat"),
+  #            aes(date, contribution),
+  #            color = "black", size = 3) +
+  geom_line(data = filter(chem_join_plot, date > as.Date("2015-11-04") &
+                            date < as.Date("2020-03-19") & group == "diat"),
+            aes(date, contribution),
+            size = 1, color = "orange") +
+  geom_line(data = filter(chem_join_plot, date > as.Date("2020-03-19") 
+                          & group == "diat"),
+            aes(date, contribution),
+            size = 1, color = "orange") +
+  geom_point(data = filter(chem_join_plot, group == "diat"),
+             aes(date, contribution),
+             pch = 21, fill = "white", color = "orange", size = 1.5, stroke = 1) +
+  geom_line(data = filter(chem_join_plot, date > as.Date("2015-02-23") &
+                            date < as.Date("2015-10-06")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2016-04-01") &
+                            date <= as.Date("2016-10-02")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2017-04-20") &
+                            date <= as.Date("2017-10-11")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2018-03-20") &
+                            date <= as.Date("2018-10-30")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2019-03-12") &
+                            date <= as.Date("2019-11-13")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2020-03-18") &
+                            date <= as.Date("2020-09-22")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2021-02-23") &
+                            date <= as.Date("2021-10-19")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2022-02-18") &
+                            date <= as.Date("2022-10-26")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  geom_line(data = filter(chem_join_plot, date >= as.Date("2023-03-21") &
+                            date <= as.Date("2023-11-07")),
+            aes(date, y = bm_sum_total/scale_int),
+            color = "black", size = 1.5) +
+  scale_y_continuous(sec.axis = sec_axis(~.*scale_int,
+                                         name = bquote("Annual Int. TChla (mg" ~ m^-2*")"))) +
+  scale_x_date(limits = as.Date(c("2015-01-01", "2024-01-01")),
+               expand = c(0, 0),
+               date_breaks = "years", date_labels = "%b%y") +
+  theme_bw() +
+  labs(y = bquote("Diatoms (mg" ~ m^-3*")"),
+       fill = "Group") +
+  theme(panel.grid.major.x =  element_line(color = "darkgrey", size = 0.5),
+        panel.grid.minor.x =  element_line(color = "darkgrey", size = 0.5),
+        legend.position = "none",
+        legend.title = element_blank(),
+        text = element_text(size = 30), #35
+        axis.text = element_text(color = "black"),
+        axis.title.x = element_blank()) +
+  guides(fill = guide_legend(nrow = 1, reverse = TRUE))
+
+ggsave(here("figures", "timeseries_5m_chemtax_integrated_diatom.png"),
+        width = 16, height = 6, dpi = 300)
+```
+
 
 POC Data
 
@@ -364,7 +477,7 @@ poc_interp_kg %>%
         axis.text = element_text(colour = "black"),
         axis.title.x = element_blank())
 
-ggsave(here("figures", "poc_interpolation_comparison.png"),
+ggsave(here("figures", "poc_interpolation_comparison_2023-05-13.png"),
        width = 12, height = 6, dpi = 300)  
 ```
 
@@ -469,9 +582,10 @@ cu_sum_poc_kg %>%
         axis.text = element_text(color = "black"),
         axis.title.x = element_blank())
 
-ggsave(here("figures", "test.png"),
+ggsave(here("figures", "test_2024-05-13.png"),
         width = 15, height = 6, dpi = 300)
 ```
+
 
 
 
